@@ -24,10 +24,10 @@ Route.get('/', async ({ view }) => {
   return view.render('welcome')
 })
 
-Route.get('/login',async ({view}) => {
-  return view.render('login')
-})
 
-Route.get('/register',async ({view}) => {
-  return view.render('register')
-})
+Route.get('register', 'AuthController.registerShow').as('auth.register.show')
+Route.get('login', 'AuthController.loginShow').as('auth.login.show')
+
+Route.post('register', 'AuthController.register').as('auth.register')
+Route.post('login', 'AuthController.login').as('auth.login')          // ++
+Route.get('logout', 'AuthController.logout').as('auth.logout')
